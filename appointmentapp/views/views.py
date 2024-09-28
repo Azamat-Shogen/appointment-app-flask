@@ -11,7 +11,7 @@ def home():
 
 @app.route('/viewAvailabilities')
 def viewAvailabilities():
-    directory = 'data'
+    directory = os.path.join(os.path.dirname(__file__), '../data')
     use_names = []
 
     if os.path.exists(directory):
@@ -31,11 +31,14 @@ def addAvailability():
 
 @app.route('/getAvailabilityForUser/<username>')
 def getAvailabilityForUser(username):
-    f_name = f"data/{username}.json"
-    with open(f_name, 'r') as f:
-        data = json.load(f)
-
-    return render_template('availability_per_person.html', user_name=username, availabilities=data)
+    f_name = os.path.join(os.path.dirname(__file__), '../data', f"{username}.json")
+    if os.path.exists(f_name):
+        with open(f_name, 'r') as f:
+            data = json.load(f)
+        return render_template('availability_per_person.html', user_name=username, availabilities=data)
+    else:
+        return jsonify({"status": "failed", "reason": "User not found."}), 404
+    
 
 @app.route('/saveAvailability', methods=['POST'])
 def save_availability():
@@ -48,8 +51,13 @@ def save_availability():
             'reason': "'name' and 'availabilites' are required fields for the 'saveAvailability' api."
         }
         return jsonify(bad_response), 400
+    
+    # Ensure 'data' directory exists
+    data_directory = os.path.join(os.path.dirname(__file__), '../data')
+    if not os.path.exists(data_directory):
+        os.makedirs(data_directory)
 
-    file_name = f"data/{name}.json"
+    file_name = os.path.join(data_directory, f"{name}.json")
     is_file = os.path.isfile(file_name)
     if is_file:
         with open(file_name, 'r') as f:
