@@ -1,4 +1,5 @@
 venv
+.vscode/
 .venv
 variables_local.env
 __pycache__

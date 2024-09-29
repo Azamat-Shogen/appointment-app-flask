@@ -26,3 +26,5 @@ to run remoter server:
 we need to ssch to the deployed ip address
 ssh root@<ip_address>
 password: droplets password
+
+
