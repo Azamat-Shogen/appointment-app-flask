@@ -22,6 +22,7 @@ docker exec -it your_container_name /bin/sh
 docker exec -it your_container_id /bin/bash
 docker exec -it your_contaner_name /bin/bash
 
-
-
-
+to run remoter server:
+we need to ssch to the deployed ip address
+ssh root@<ip_address>
+password: droplets password
