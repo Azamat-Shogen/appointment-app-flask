@@ -17,7 +17,7 @@ docker build -t flask-app-image .
 ```
 Run a container:
 ```commandline
-docker run -d --name flask-app -p 5002:5002 flask-app-image
+docker run -d --name flask-app -p 5001:5001 flask-app-image
 ```
 Run a container using the image ID:
 ```commandline
