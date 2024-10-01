@@ -13,11 +13,11 @@ A web app to book appointments. Class project.
 
 Build image:
 ```commandline
-docker build -t flask-app .
+docker build -t flask-app-image .
 ```
 Run a container:
 ```commandline
-docker run -d -p 5002:5002 flask-app
+docker run -d --name flask-app -p 5002:5002 flask-app-image
 ```
 Run a container using the image ID:
 ```commandline

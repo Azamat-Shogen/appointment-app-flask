@@ -5,8 +5,8 @@ FROM python:3-slim
 # Set PYTHONPATH to include the /app directory
 ENV PYTHONPATH=/app
 
-# Expose port 5002
-EXPOSE 5002
+# Expose port 5001
+EXPOSE 5001
 
 # Keeps Python from generating .pyc files in the container
 ENV PYTHONDONTWRITEBYTECODE=1
