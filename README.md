@@ -11,20 +11,54 @@ set PYTHONPATH=<path>/<to>/appointment-app-flask
 # appointment-app-flask
 A web app to book appointments. Class project. 
 
-build image: docker build -t flask-app .
-run container: docker run -p 5002:5002 flask-app
-stop container docker stop <container_id_or_name>
-remove container: docker rm <container_id_or_name>
+Build image:
+```commandline
+docker build -t flask-app .
+```
+Run a container:
+```commandline
+docker run -d -p 5002:5002 flask-app
+```
+Run a container using the image ID:
+```commandline
+docker run -d -p 5002:5002 <image_id>
+```
+Stop a container:
+```commandline
+docker stop <container_id_or_name>
+```
+Remove a container:
+```commandline
+docker rm <container_id_or_name>
+```
+
+Remove a container with force flag
+```commandline
 docker rm -f <container_id_or_name>
+```
 
-docker exec -it your_container_id /bin/sh
-docker exec -it your_container_name /bin/sh
-docker exec -it your_container_id /bin/bash
-docker exec -it your_contaner_name /bin/bash
+Interacting with Containers:
+* Accessing a container's shell:
+```commandline
+docker exec -it <container_id_or_name> /bin/sh
+```
+* Accessing a container using bash:
+```commandline
+docker exec -it <container_id_or_name> /bin/bash
+```
 
-to run remoter server:
-we need to ssch to the deployed ip address
+Running on a Remote Server:
+
+We need to ssh to the deployed ip address
 ssh root@<ip_address>
 password: droplets password
 
+Install docker commands on a remote server
+
+curl -fsSL https://get.docker.com -o get-docker.sh
+
+sudo sh get-docker.sh
+
+Check docker version
+docker --version
 
